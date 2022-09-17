@@ -6,12 +6,26 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{appTitle}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
+      <link rel="stylesheet" href="/stylesheets/style.css"/>
    </head>
 
    <body>
 
-      {{{body}}}
+<nav class = "space-between">
+      <ul class="nav-bar">
+         <li><a href="/">Home</a></li>
+        <li><a href="/profile">List</a></li>
+        <li><a href="#">Priorities</a></li>
+        <li><a href="#">Celebrate</a></li>
+        </ul>
+        <ul class="nav-bar">
+          <li><a href="/signup" target="_blank">Sign up</a></li>
+          <li><a href="/login">Log in</a></li>
+        </ul>
+      </nav>
+
+
+   {{{body}}}
 
       <script src="/js/script.js"></script>
    </body>

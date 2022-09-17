@@ -1,7 +1,9 @@
 const express = require("express");
 const router =express.Router();
 const User = require("../models/User.model");
-const bcryptjs = require("bcryptjs")
+const bcryptjs = require("bcryptjs");
+
+const { isAuthenticated, isNotAuthenticated } = require('../middlewares/auth.middleware.js');
 
 
 //GET home page //
@@ -40,7 +42,7 @@ router.post("/signup", (req, res, next)=> {
 })
 
 //GET login route
-router.get("/login", (req, res, next)=> {
+router.get("/login", isNotAuthenticated, (req, res, next)=> {
   res.render("login.hbs")
 })
 
@@ -94,10 +96,12 @@ router.get("/profile", (req, res, next)=> {
   } else {
     res.render("profile.hbs", {username: "Stranger"})
   }
- 
 })
 
-
+//Protected route
+router.get('/protected', isAuthenticated, (req, res, next)=>{
+  res.send('this is protected route')
+})
 
 
 

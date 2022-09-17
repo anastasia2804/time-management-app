@@ -1,16 +1,34 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  background-color: red;
+} */
 
-a {
+/* a {
   color: #00b7ff;
 }
 
 h1 {
   color: 15px;
-}
+} */
 
 .form-setup > label, input {
   display: block;
+}
+
+nav {
+  display:flex;
+  justify-content: space-between;
+}
+
+
+nav ul {
+  display:flex;
+  list-style-type: none;
+}
+
+nav ul a {
+  margin-right:2rem;
+  text-decoration: none;
+  font-size: 1.5rem;
 }
