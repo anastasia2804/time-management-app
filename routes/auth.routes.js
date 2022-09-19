@@ -79,7 +79,7 @@ router.post("/login", (req, res, next)=> {
     //setting up a session and storing a user there
     req.session.user=foundUser;
 
-    res.redirect("/profile")
+    res.redirect("/my-list")
     
   })
   .catch(err => {
@@ -88,13 +88,13 @@ router.post("/login", (req, res, next)=> {
   })
 })
 
-//GET profile route
-router.get("/profile", (req, res, next)=> {
+//GET my-list route
+router.get("/my-list", (req, res, next)=> {
   //if user's data is in a session, use it in hbs
   if(req.session.user) {
-    res.render("profile.hbs", {username: req.session.user.username})
+    res.render("my-list.hbs", {username: req.session.user.username})
   } else {
-    res.render("profile.hbs", {username: "Stranger"})
+    res.render("my-list.hbs", {username: "Stranger"})
   }
 })
 

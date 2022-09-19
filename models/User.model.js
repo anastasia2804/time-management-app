@@ -2,21 +2,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: {
+  username: {
       type: String,
-      required: true
-      // unique: true -> Ideally, should be unique, but its up to you
-    },
+      required: true,
+      unique: true
+  },
     password: {
     type: String,
     required: true
   },
-  },
-  {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
-  }
-);
+  listArr: [{
+    type: Schema.Types.ObjectId,
+    ref: 'List'
+  }]
+  });
 
 const User = mongoose.model("User", userSchema);
 
