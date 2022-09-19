@@ -88,20 +88,20 @@ router.post("/login", (req, res, next)=> {
   })
 })
 
-//GET my-list route
-router.get("/my-list", (req, res, next)=> {
-  //if user's data is in a session, use it in hbs
-  if(req.session.user) {
-    res.render("my-list.hbs", {username: req.session.user.username})
-  } else {
-    res.render("my-list.hbs", {username: "Stranger"})
-  }
-})
+// //GET my-list route
+// router.get("/my-list", (req, res, next)=> {
+//   //if user's data is in a session, use it in hbs
+//   if(req.session.user) {
+//     res.render("my-list.hbs", {username: req.session.user.username})
+//   } else {
+//     res.render("my-list.hbs", {username: "Stranger"})
+//   }
+// })
 
-//Protected route
-router.get('/protected', isAuthenticated, (req, res, next)=>{
-  res.send('this is protected route')
-})
+// //Protected route
+// router.get('/protected', isAuthenticated, (req, res, next)=>{
+//   res.send('this is protected route')
+// })
 
 
 

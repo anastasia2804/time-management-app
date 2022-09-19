@@ -9,5 +9,45 @@
 <body>
     <h1>My List</h1>
     <h3>Welcome, {{username}}</h3>
+     <form method="post" action="/my-list">
+     <div>
+        <input type="text" name="description" placeholder="Type your task here">
+        </div>
+        <div>
+        <details>
+        <summary>Ask yourself..</summary>
+        <label for="importance">Is it important?</label>
+            <select id="importance" name="important">
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+            </select>
+        <label for="importance">Is it urgent?</label>
+            <select id="urgency" name="urgent">
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+            </select>
+        </details>
+        </div>
+        <div>
+        <button onclick="newElement()" type="submit">Add item</button>
+        </div>
+    </form>
+    {{#each listsArr}}
+    <div>
+    <form class="list-status" method="post" action="/list/{{this._id}}/update">
+        <input type="checkbox" name="status">
+    </form>
+    <h4>{{this.description}}</h4>
+    </div>
+    {{/each}}
+    <script>
+       let myListStatusArr = document.querySelectorAll('.list-status')
+       console.log(myListStatusArr)
+       for(let i=0; i<myListStatusArr.length; i++){
+        myListStatusArr[i].addEventListener('click', function(event) {
+            event.currentTarget.submit()
+        })
+       }
+    </script>
 </body>
 </html>
