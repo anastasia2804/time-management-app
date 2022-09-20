@@ -60,28 +60,16 @@ router.get('/priorities', (req, res, next) => {
         const importantUrgentArr = tasksArr.filter(el => {
             return el.urgent == true && el.important == true
         })
-        res.render('priorities.hbs', {importantUrgentArr})
-    })
-
-    .then(tasksArr=> {
         const importantNonUrgentArr = tasksArr.filter(el => {
             return el.urgent == false && el.important == true
         })
-        res.render('priorities.hbs', {importantNonUrgentArr})
-    })
-
-    .then(tasksArr=> {
         const urgentNotImportantArr = tasksArr.filter(el => {
             return el.urgent == true && el.important == false
         })
-    res.render('priorities.hbs', {urgentNotImportantArr})
-    })
-
-    then(tasksArr=> {
         const nonUrgentNotImportantArr = tasksArr.filter(el => {
             return el.urgent == false && el.important == false
         })
-    res.render('priorities.hbs', {nonUrgentNotImportantArr})
+        res.render('priorities.hbs', {importantUrgentArr, importantNonUrgentArr, urgentNotImportantArr, nonUrgentNotImportantArr})
     })
     .catch(err => res.send(err))
 })

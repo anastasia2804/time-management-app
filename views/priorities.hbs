@@ -13,11 +13,40 @@
   <div class="grid-item">Important</div>
   <div class="grid-item">Not Important</div>
   <div class="grid-item">Urgent</div>
-  <div class="grid-item">5</div>
-  <div class="grid-item">6</div>
+  <div class="grid-item">
+    {{#each importantUrgentArr}}
+    <input class="list-status" type="checkbox" name="status">
+    <h4>{{this.description}}</h4>
+    {{/each}}
+  </div>
+  <div class="grid-item">
+    {{#each urgentNotImportantArr}}
+    <input class="list-status" type="checkbox" name="status">
+    <h4>{{this.description}}</h4>
+    {{/each}}
+  </div>
   <div class="grid-item">Non-urgent</div>
-  <div class="grid-item">8</div>
-  <div class="grid-item">9</div>
+  <div class="grid-item">
+    {{#each importantNonUrgentArr}}
+    <input class="list-status" type="checkbox" name="status">
+    <h4>{{this.description}}</h4>
+    {{/each}}
+  </div>
+  <div class="grid-item">
+    {{#each nonUrgentNotImportantArr}}
+    <input class="list-status" type="checkbox" name="status">
+    <h4>{{this.description}}</h4>
+    {{/each}}
+  </div>
 </div>
+<script>
+       let myListStatusArr = document.querySelectorAll('.list-status')
+       console.log(myListStatusArr)
+       for(let i=0; i<myListStatusArr.length; i++){
+        myListStatusArr[i].addEventListener('click', function(event) {
+            event.currentTarget.submit()
+        })
+       }
+    </script>
 </body>
 </html>
