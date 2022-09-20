@@ -5,16 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
+    <div class="container">
     <h1>My List</h1>
     <h3>Welcome, {{username}}</h3>
+    
      <form method="post" action="/my-list">
-     <div>
+     <div class="split add-task-line">
+        <div>
         <input type="text" name="description" placeholder="Type your task here">
         </div>
+        
         <div>
-        <details>
+        <button type="submit">Add item</button>
+        </div>
+        </div>
+    </form>
+    
+    {{#each listsArr}}
+    {{!-- <div>
+    <form method="post" action="/list/{{this._id}}/update">
+    <div class="split">
+        <input class="list-status" type="checkbox" name="status">
+        <h4>{{this.description}}</h4>
+         <details>
         <summary>Ask yourself..</summary>
         <label for="importance">Is it important?</label>
             <select id="importance" name="important">
@@ -27,17 +43,36 @@
                 <option value="no">no</option>
             </select>
         </details>
-        </div>
-        <div>
-        <button onclick="newElement()" type="submit">Add item</button>
+        <button type="submit">Move</button>
         </div>
     </form>
-    {{#each listsArr}}
-    <div>
-    <form class="list-status" method="post" action="/list/{{this._id}}/update">
-        <input type="checkbox" name="status">
+    </div> --}}
+
+    <div class="split">
+        
+        <h4>{{this.description}}</h4>
+        <form method="post" action="/my-list/{{this._id}}/update">
+        <details>
+        <summary>Ask yourself..</summary>
+        <label for="importance">Is it important?</label>
+            <select id="importance" name="important">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        <label for="importance">Is it urgent?</label>
+            <select id="urgency" name="urgent">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+             <button type="submit">Move</button>
+        </details>
+       
     </form>
-    <h4>{{this.description}}</h4>
+
+    <form method="POST" action="/my-list/{{this._id}}/delete">
+      <button>Delete</button>
+    </form>
+
     </div>
     {{/each}}
     <script>
