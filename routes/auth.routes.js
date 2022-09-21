@@ -88,6 +88,14 @@ router.post("/login", (req, res, next)=> {
   })
 })
 
+router.post('/logout', (req, res, next) => {
+  req.session.destroy(err => {
+    if (err) next(err);
+    res.redirect('/');
+  });
+});
+
+
 // //GET my-list route
 // router.get("/my-list", (req, res, next)=> {
 //   //if user's data is in a session, use it in hbs

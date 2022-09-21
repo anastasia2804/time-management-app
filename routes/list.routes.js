@@ -7,11 +7,13 @@ const e = require("express");
 
 //GET route, create a new item on the list
 router.get('/my-list', isAuthenticated, (req, res, next)=> {
+    let username = req.session.user.username
+
     List.find({
         $and: [{userId: req.session.user._id}, {status:false}, {important:null}, {urgent: null}]
     })
     .then(listsArr => {
-        res.render('my-list.hbs', {listsArr})
+        res.render('my-list.hbs', {listsArr, username})
     })
     
 })
@@ -76,13 +78,35 @@ router.get('/priorities', isAuthenticated, (req, res, next) => {
     .catch(err => res.send(err))
 })
 
-router.post('/priorities/:id/edit', (req, res, next)=> {
+router.post('/priorities/:id/update', (req, res, next)=> {
     console.log(req.body)
     List.findByIdAndUpdate(req.params.id, {status: req.body.status == 'on'})
-    .then(foundTask => res.redirect('/my-list'))
+    .then(foundTask => res.redirect('/priorities'))
     .catch(err => console.log(err))
 })
 
+router.post('priorities/:id/edit', (req, res, next) =>{
+    List.findByIdAndUpdate(req.params.id, {description: req.body.description}, { new: true })
+    .then(foundTask => res.redirect('/priorities'))
+    .catch(err => console.log(err))
+})
+
+router.post('/priorities/:id/delete', (req, res, next) => {
+    List.findByIdAndDelete(req.params.id)
+    .then(()=>res.redirect('/priorities'))
+    .catch(err=> console.log(err))
+})
+
+router.get('/completed', isAuthenticated, (req, res, next)=> {
+
+    List.find({
+        $and: [{userId: req.session.user._id}, {status:true}]
+    })
+    .then(listsArr => {
+        res.render('completed.hbs', {listsArr})
+    })
+    
+})
 
 module.exports = router;
 

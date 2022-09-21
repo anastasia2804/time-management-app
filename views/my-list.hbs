@@ -25,29 +25,7 @@
     </form>
     
     {{#each listsArr}}
-    {{!-- <div>
-    <form method="post" action="/list/{{this._id}}/update">
-    <div class="split">
-        <input class="list-status" type="checkbox" name="status">
-        <h4>{{this.description}}</h4>
-         <details>
-        <summary>Ask yourself..</summary>
-        <label for="importance">Is it important?</label>
-            <select id="importance" name="important">
-                <option value="yes">yes</option>
-                <option value="no">no</option>
-            </select>
-        <label for="importance">Is it urgent?</label>
-            <select id="urgency" name="urgent">
-                <option value="yes">yes</option>
-                <option value="no">no</option>
-            </select>
-        </details>
-        <button type="submit">Move</button>
-        </div>
-    </form>
-    </div> --}}
-
+    
     <div class="split">
         
         <h4>{{this.description}}</h4>
@@ -69,16 +47,16 @@
        
     </form>
 
-    <form method="POST" action="/my-list/{{this._id}}/edit">
-      <button>Edit</button>
-    </form>
-
     <form method="POST" action="/my-list/{{this._id}}/delete">
       <button>Delete</button>
     </form>
 
     </div>
     {{/each}}
+
+    <div>
+        <a href="/priorities">See your priorities</a>
+    </div>
     
 </body>
 </html>

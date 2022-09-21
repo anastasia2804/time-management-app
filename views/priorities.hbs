@@ -15,40 +15,120 @@
   <div class="grid-item">Urgent</div>
   <div class="grid-item">
     {{#each importantUrgentArr}}
+    <form method="POST" action="/priorities/{{this._id}}/update">
     <input class="list-status" type="checkbox" name="status">
+    </form>
+
     <h4>{{this.description}}</h4>
+
+    
+    <div>
+      <button class="hidden-edit">Edit</button>
+      <div style="display:none;">
+        <form method="POST" action="/priorities/{{this._id}}/edit">
+            <input type="text" value="{{this.description}}" name="description">
+            <button type="submit">Save</button>  
+        </form>
+        <button class="cancel-edit">Cancel</button>
+      </div>
+    </div>
+    
+    <form method="POST" action="/priorities/{{this._id}}/delete">
+      <button>Delete</button>
+    </form>
+
     {{/each}}
   </div>
   <div class="grid-item">
     {{#each urgentNotImportantArr}}
+    <form method="POST" action="/priorities/{{this._id}}/update">
     <input class="list-status" type="checkbox" name="status">
+    </form>
     <h4>{{this.description}}</h4>
+
+    <form method="POST" action="/priorities/{{this._id}}/edit">
+      <button>Edit</button>
+    </form>
+
+    <form method="POST" action="/priorities/{{this._id}}/delete">
+      <button>Delete</button>
+    </form>
+
     {{/each}}
   </div>
   <div class="grid-item">Non-urgent</div>
   <div class="grid-item">
     {{#each importantNonUrgentArr}}
+    <form method="POST" action="/priorities/{{this._id}}/update">
     <input class="list-status" type="checkbox" name="status">
+    </form>
     <h4>{{this.description}}</h4>
+
+    <form method="POST" action="/priorities/{{this._id}}/edit">
+      <button>Edit</button>
+    </form>
+
+    <form method="POST" action="/priorities/{{this._id}}/delete">
+      <button>Delete</button>
+    </form>
+
     {{/each}}
   </div>
   <div class="grid-item">
     {{#each nonUrgentNotImportantArr}}
-    <form action="/priorities/{{this._id}}/edit" method="POST">
+    <form action="/priorities/{{this._id}}/update" method="POST">
     <input class="list-status" type="checkbox" name="status">
     <h4>{{this.description}}</h4>
+    </form>
+
+    <form method="POST" action="/priorities/{{this._id}}/edit">
+      <button>Edit</button>
+    </form>
+    <form method="POST" action="/priorities/{{this._id}}/delete">
+      <button>Delete</button>
     </form>
     {{/each}}
   </div>
 </div>
+
+  <div>
+      <a href="/completed">View your accomplishments</a>
+  </div>
+
 <script>
        let myListStatusArr = document.querySelectorAll('.list-status')
        console.log(myListStatusArr)
        for(let i=0; i<myListStatusArr.length; i++){
         myListStatusArr[i].addEventListener('click', function(event) {
-            event.currentTarget.submit()
+            event.currentTarget.parentElement.submit()
         })
        }
+
+       let myEditButtonArr = document.querySelectorAll('.hidden-edit');
+       console.log(myEditButtonArr)
+       for(let i = 0; i < myEditButtonArr.length; i++){
+        myEditButtonArr[i].addEventListener('click', function(event){
+          let formDiv = event.currentTarget.parentElement.querySelector('div');
+          if(formDiv.style.display === 'none'){
+            formDiv.style.display = 'block';
+            event.currentTarget.style.display = 'none';
+          }
+        })
+       }
+
+       let myCancelEditButtonArr = document.querySelectorAll('.cancel-edit');
+       console.log(myCancelEditButtonArr)
+       for(let i = 0; i < myCancelEditButtonArr.length; i++){
+        myCancelEditButtonArr[i].addEventListener('click', function(event){
+          let grandparentDiv = event.currentTarget.parentElement.parentElement;
+          let parentDiv = event.currentTarget.parentElement;
+          if(parentDiv.style.display !== 'none'){
+            parentDiv.style.display = 'none';
+            grandparentDiv.querySelector('.hidden-edit').style.display = 'inline'
+          }
+        })
+       }
+      
     </script>
 </body>
 </html>
