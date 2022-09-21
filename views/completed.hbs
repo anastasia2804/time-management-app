@@ -5,13 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
     {{#each listsArr}}
-    <h4>{{this.description}}</h4>
-    <form method="POST" action="/completed/{{this._id}}/delete">
-      <button>Delete</button>
-    </form>
+    <div class="completedBx">
+        <div>
+        <h4>{{this.description}}</h4>
+        </div>
+        <div>
+        <form method="POST" action="/completed/{{this._id}}/delete">
+        <button class="task-update-btn-small">Delete</button>
+        </form>
+        </div>
+    </div>
     {{/each}}
 </body>
 </html>

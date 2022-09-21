@@ -10,119 +10,170 @@
 <body>
     <div class="grid-container">
   <div class="grid-item"></div>
-  <div class="grid-item">Important</div>
-  <div class="grid-item">Not Important</div>
-  <div class="grid-item">Urgent</div>
+  <div class="grid-item grid-item-title">Important</div>
+  <div class="grid-item grid-item-title">Not Important</div>
+  <div class="grid-item grid-item-title">Urgent</div>
   <div class="grid-item">
     {{#each importantUrgentArr}}
-    <form method="POST" action="/priorities/{{this._id}}/update">
-    <input class="list-status" type="checkbox" name="status">
-    </form>
+    <div class="task-priorities-container">
+    <div class="task-priorities-BX">
+      <div class="checkbox">
+      <form method="POST" action="/priorities/{{this._id}}/update">
+      <input class="list-status" type="checkbox" name="status">
+      </form>
+      </div>
 
-    <h4>{{this.description}}</h4>
+      
+      <h4>{{this.description}}</h4>
 
+    </div>
     
+    <div class="task-priorities-buttons-BX">
     <div>
-      <button class="hidden-edit">Edit</button>
+      <button class="hidden-edit task-update-btn">Edit</button>
       <div style="display:none;">
         <form method="POST" action="/priorities/{{this._id}}/edit">
             <input type="text" value="{{this.description}}" name="description">
-            <button type="submit">Save</button>  
+            <button class="task-update-btn-small" type="submit">Save</button>  
         </form>
-        <button class="cancel-edit">Cancel</button>
+        <button class="cancel-edit task-update-btn-small">Cancel</button>
       </div>
     </div>
     
+
+    <div>
     <form method="POST" action="/priorities/{{this._id}}/delete">
-      <button>Delete</button>
+      <button class="task-update-btn">Delete</button>
     </form>
+    </div>
+    </div>
+    </div>
 
     {{/each}}
   </div>
   <div class="grid-item">
     {{#each urgentNotImportantArr}}
-    <form method="POST" action="/priorities/{{this._id}}/update">
-    <input class="list-status" type="checkbox" name="status">
-    </form>
+<div class="task-priorities-container">
+    <div class="task-priorities-BX">
+      <div class="checkbox">
+      <form method="POST" action="/priorities/{{this._id}}/update">
+      <input class="list-status" type="checkbox" name="status">
+      </form>
+      </div>
 
-    <h4>{{this.description}}</h4>
+      
+      <h4>{{this.description}}</h4>
 
+    </div>
     
+    <div class="task-priorities-buttons-BX">
     <div>
-      <button class="hidden-edit">Edit</button>
+      <button class="hidden-edit task-update-btn">Edit</button>
       <div style="display:none;">
         <form method="POST" action="/priorities/{{this._id}}/edit">
             <input type="text" value="{{this.description}}" name="description">
-            <button type="submit">Save</button>  
+            <button class="task-update-btn-small" type="submit">Save</button>  
         </form>
-        <button class="cancel-edit">Cancel</button>
+        <button class="cancel-edit task-update-btn-small">Cancel</button>
       </div>
     </div>
     
+
+    <div>
     <form method="POST" action="/priorities/{{this._id}}/delete">
-      <button>Delete</button>
+      <button class="task-update-btn">Delete</button>
     </form>
+    </div>
+    </div>
+    </div>
 
     {{/each}}
   </div>
-  <div class="grid-item">Non-urgent</div>
+  <div class="grid-item grid-item-title">Not urgent</div>
   <div class="grid-item">
+
     {{#each importantNonUrgentArr}}
-    <form method="POST" action="/priorities/{{this._id}}/update">
-    <input class="list-status" type="checkbox" name="status">
-    </form>
+<div class="task-priorities-container">
+    <div class="task-priorities-BX">
+      <div class="checkbox">
+      <form method="POST" action="/priorities/{{this._id}}/update">
+      <input class="list-status" type="checkbox" name="status">
+      </form>
+      </div>
 
-    <h4>{{this.description}}</h4>
+      
+      <h4>{{this.description}}</h4>
 
+    </div>
     
+    <div class="task-priorities-buttons-BX">
     <div>
-      <button class="hidden-edit">Edit</button>
+      <button class="hidden-edit task-update-btn">Edit</button>
       <div style="display:none;">
         <form method="POST" action="/priorities/{{this._id}}/edit">
             <input type="text" value="{{this.description}}" name="description">
-            <button type="submit">Save</button>  
+            <button class="task-update-btn-small" type="submit">Save</button>  
         </form>
-        <button class="cancel-edit">Cancel</button>
+        <button class="cancel-edit task-update-btn-small">Cancel</button>
       </div>
     </div>
     
+
+    <div>
     <form method="POST" action="/priorities/{{this._id}}/delete">
-      <button>Delete</button>
+      <button class="task-update-btn">Delete</button>
     </form>
+    </div>
+    </div>
+    </div>
 
     {{/each}}
+
   </div>
   <div class="grid-item">
     {{#each nonUrgentNotImportantArr}}
-    <form method="POST" action="/priorities/{{this._id}}/update">
-    <input class="list-status" type="checkbox" name="status">
-    </form>
+    <div class="task-priorities-container">
+    <div class="task-priorities-BX">
+      <div class="checkbox">
+      <form method="POST" action="/priorities/{{this._id}}/update">
+      <input class="list-status" type="checkbox" name="status">
+      </form>
+      </div>
 
-    <h4>{{this.description}}</h4>
+      
+      <h4>{{this.description}}</h4>
 
+    </div>
     
+    <div class="task-priorities-buttons-BX">
     <div>
-      <button class="hidden-edit">Edit</button>
+      <button class="hidden-edit task-update-btn">Edit</button>
       <div style="display:none;">
         <form method="POST" action="/priorities/{{this._id}}/edit">
             <input type="text" value="{{this.description}}" name="description">
-            <button type="submit">Save</button>  
+            <button class="task-update-btn-small" type="submit">Save</button>  
         </form>
-        <button class="cancel-edit">Cancel</button>
+        <button class="cancel-edit task-update-btn-small">Cancel</button>
       </div>
     </div>
     
+
+    <div>
     <form method="POST" action="/priorities/{{this._id}}/delete">
-      <button>Delete</button>
+      <button class="task-update-btn">Delete</button>
     </form>
-    
+    </div>
+    </div>
+    </div>
+
     {{/each}}
   </div>
 </div>
+<h5 class="text-center"><a href="/completed">View your accomplishments</a></h5>
 
-  <div>
-      <a href="/completed">View your accomplishments</a>
-  </div>
+ 
+     
+
 
 <script>
        let myListStatusArr = document.querySelectorAll('.list-status')

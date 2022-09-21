@@ -1,9 +1,4 @@
-/* body {
-  padding: 0;
-  margin: 0;
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-} */
+
 
 nav {
   display:flex;
@@ -21,16 +16,6 @@ nav ul a {
   text-decoration: none;
   /* font-size: 1.5rem; */
 }
-
-/* .container {
-  display: flex;
-  padding: 0.5rem;
-} */
-
-/* .container {
-  margin-inline: auto;
-  width: min(50%, 70.5rem)
-} */
 
 .split {
   display: flex;
@@ -197,7 +182,6 @@ section .contentBx .formBx .inputBx p a {
 }
 
 
-
 /*Priorities.hbs*/
 .grid-container {
   display: grid;
@@ -214,3 +198,65 @@ section .contentBx .formBx .inputBx p a {
   text-align: left;
 }
 
+.task-priorities-BX {
+  display: flex;
+}
+
+.task-priorities-BX > h4 {
+  padding: 0 20px 10px 20px;
+}
+
+.task-priorities-buttons-BX {
+  display: flex;
+  justify-content: space-around;
+}
+
+.task-priorities-container {
+  padding-bottom: 20px;
+}
+
+.task-update-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    outline: none;
+    border: 1px solid #ff4584;
+    cursor: pointer;
+ }
+
+ .task-update-btn:hover {
+    background-color: #f53677;
+}
+
+.task-update-btn-small {
+  padding: 0 10px;
+  letter-spacing: 1px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+
+.task-update-btn-small:hover {
+  background-color: #03a9f4;
+}
+
+.grid-item-title {
+  text-align: center;
+  font-weight:600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+/* Completed hbs*/
+.completedBx {
+  display: flex;
+  justify-content: space-between;
+}
