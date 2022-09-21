@@ -7,20 +7,49 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Log in page</h1>
+
+{{!-- 
+    <h2>Login</h2>
     <form method="post" action="/login">
-        <div class="form-setup">
-            <label>Username:</label>
+        
+            <span>Username</span>
             <input type="text" name="username">
-        </div>
-          <div class="form-setup">
-            <label>Password:</label>
+        
+          
+            <span>Password</span>
             <input type="password" name="password">
-        </div>
+        
         <div>
-            <button type="submit">Log In</button>
+            <button type="submit">Sign In</button>
         </div>
-    </form>
+    </form> --}}
     
+
+    <section>
+        <div class="imgBx">
+          <img src="images/log-in.jpg">
+        </div>
+        <div class="contentBx">
+            <div class="formBx">
+                <h2>Login</h2>
+                <form method="post" action="/login">
+                    <div class="inputBx">
+                        <span>Username</span>
+                        <input type="text" name="username">
+                    </div>
+                    <div class="inputBx">
+                        <span>Password</span>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="inputBx">
+                        <button type="submit">Sign In</button>
+                    </div>
+                    <div class="inputBx">
+                        <p>Don't have an account <a href="/signup">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </section>
 </body>
 </html>

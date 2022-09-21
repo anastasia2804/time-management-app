@@ -46,13 +46,15 @@ router.post('/my-list/:id/update', (req, res, next)=> {
     .catch(err => console.log(err))
 })
 
+
+
 router.post('/my-list/:id/delete', (req, res, next) => {
     List.findByIdAndDelete(req.params.id)
     .then(()=>res.redirect('/my-list'))
     .catch(err=> console.log(err))
 })
 
-router.get('/priorities', (req, res, next) => {
+router.get('/priorities', isAuthenticated, (req, res, next) => {
     List.find({
         $and: [{userId: req.session.user._id}, {status: false}, {important: {$ne: null}}, {urgent: {$ne: null}}]
     })
@@ -74,7 +76,12 @@ router.get('/priorities', (req, res, next) => {
     .catch(err => res.send(err))
 })
 
-
+router.post('/priorities/:id/edit', (req, res, next)=> {
+    console.log(req.body)
+    List.findByIdAndUpdate(req.params.id, {status: req.body.status == 'on'})
+    .then(foundTask => res.redirect('/my-list'))
+    .catch(err => console.log(err))
+})
 
 
 module.exports = router;

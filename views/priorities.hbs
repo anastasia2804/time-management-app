@@ -34,8 +34,10 @@
   </div>
   <div class="grid-item">
     {{#each nonUrgentNotImportantArr}}
+    <form action="/priorities/{{this._id}}/edit" method="POST">
     <input class="list-status" type="checkbox" name="status">
     <h4>{{this.description}}</h4>
+    </form>
     {{/each}}
   </div>
 </div>

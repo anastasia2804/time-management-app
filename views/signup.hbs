@@ -7,20 +7,29 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Sign up page</h1>
-    <form method="post" action="/signup">
-        <div class="form-setup">
-            <label>Username:</label>
-            <input type="text" name="username">
+    <section>
+        <div class="imgBx">
+          <img src="images/log-in.jpg">
         </div>
-          <div class="form-setup">
-            <label>Password:</label>
-            <input type="password" name="password">
+        <div class="contentBx">
+            <div class="formBx">
+                <h2>Signup</h2>
+                <form method="post" action="/signup">
+                    <div class="inputBx">
+                        <span>Username</span>
+                        <input type="text" name="username">
+                    </div>
+                    <div class="inputBx">
+                        <span>Password</span>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="inputBx">
+                        <button type="submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div>
-            <button type="submit">Sign Up</button>
-        </div>
-    </form>
-    
+      </section>
+
 </body>
 </html>

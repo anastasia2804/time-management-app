@@ -33,7 +33,7 @@ router.post("/signup", (req, res, next)=> {
   })
   .then(savedUser => {
     console.log(savedUser)
-    res.send(savedUser)
+    res.redirect("/login")
   })
   .catch(err => {
     console.log(err)
