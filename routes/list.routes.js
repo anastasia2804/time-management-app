@@ -85,7 +85,8 @@ router.post('/priorities/:id/update', (req, res, next)=> {
     .catch(err => console.log(err))
 })
 
-router.post('priorities/:id/edit', (req, res, next) =>{
+router.post('/priorities/:id/edit', (req, res, next) =>{
+    console.log(req.body)
     List.findByIdAndUpdate(req.params.id, {description: req.body.description}, { new: true })
     .then(foundTask => res.redirect('/priorities'))
     .catch(err => console.log(err))
