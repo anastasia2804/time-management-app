@@ -9,6 +9,9 @@
 <body>
     {{#each listsArr}}
     <h4>{{this.description}}</h4>
+    <form method="POST" action="/completed/{{this._id}}/delete">
+      <button>Delete</button>
+    </form>
     {{/each}}
 </body>
 </html>

@@ -106,8 +106,14 @@ router.get('/completed', isAuthenticated, (req, res, next)=> {
     .then(listsArr => {
         res.render('completed.hbs', {listsArr})
     })
-    
 })
+
+router.post('/completed/:id/delete', (req, res, next) => {
+    List.findByIdAndDelete(req.params.id)
+    .then(()=>res.redirect('/completed'))
+    .catch(err=> console.log(err))
+})
+
 
 module.exports = router;
 
