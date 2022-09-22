@@ -1,0 +1,33 @@
+*
+{
+margin:0;
+   padding:0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+ }
+
+.completedBx {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px;
+  }
+
+.margin-top-bottom {
+    margin: 20px;
+}
+
+.styled-break {
+    width: 150%;
+    height: 5px;
+    background-color: palevioletred;
+    border-radius: 2.5px;
+    margin: 30px 0 30px 0;
+  }

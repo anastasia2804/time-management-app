@@ -8,12 +8,12 @@ const { isAuthenticated, isNotAuthenticated } = require('../middlewares/auth.mid
 
 //GET home page //
 router.get("/", (req, res, next) => {
-  res.render("index.hbs");
+  res.render("index.hbs", {style:'home.css'});
 });
 
 //GET sign up page
 router.get("/signup", (req, res, next)=> {
-  res.render("signup.hbs")
+  res.render("signup.hbs", {style:'login.css'})
 })
 
 //POST sign up page
@@ -43,7 +43,7 @@ router.post("/signup", (req, res, next)=> {
 
 //GET login route
 router.get("/login", isNotAuthenticated, (req, res, next)=> {
-  res.render("login.hbs")
+  res.render("login.hbs", {style:'login.css'})
 })
 
 //POST login route

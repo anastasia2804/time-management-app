@@ -8,17 +8,20 @@
     <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
-    {{#each listsArr}}
-    <div class="completedBx">
-        <div>
-        <h4>{{this.description}}</h4>
-        </div>
-        <div>
-        <form method="POST" action="/completed/{{this._id}}/delete">
-        <button class="task-update-btn-small">Delete</button>
-        </form>
-        </div>
+    <div class="container">
+        <div class="completedBx">
+        {{#each listsArr}}
+            <div>
+            <h4 class="margin-top-bottom">{{this.description}}</h4>
+            </div>
+            <div>
+            <form method="POST" action="/completed/{{this._id}}/delete">
+            <button class="task-update-btn-small">Delete</button>
+            </form>
+           </div>
+      <div class="styled-break"></div>
+        {{/each}}
+          </div>
     </div>
-    {{/each}}
 </body>
 </html>

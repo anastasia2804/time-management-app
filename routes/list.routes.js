@@ -13,7 +13,7 @@ router.get('/my-list', isAuthenticated, (req, res, next)=> {
         $and: [{userId: req.session.user._id}, {status:false}, {important:null}, {urgent: null}]
     })
     .then(listsArr => {
-        res.render('my-list.hbs', {listsArr, username})
+        res.render('my-list.hbs', {listsArr, username, style: "mylist.css"})
     })
     
 })
@@ -33,13 +33,6 @@ router.post('/my-list', isAuthenticated, (req, res, next)=> {
     .then(createdTask => res.redirect('/my-list'))
     .catch(err => console.log(err))
 })
-
-// router.post('/my-list/:id/update', (req, res, next)=> {
-//     console.log(req.body)
-//     List.findByIdAndUpdate(req.params.id, {status: req.body.status == 'on'})
-//     .then(foundTask => res.redirect('/my-list'))
-//     .catch(err => console.log(err))
-// })
 
 router.post('/my-list/:id/update', (req, res, next)=> {
     console.log(req.body)
@@ -73,7 +66,7 @@ router.get('/priorities', isAuthenticated, (req, res, next) => {
         const nonUrgentNotImportantArr = tasksArr.filter(el => {
             return el.urgent == false && el.important == false
         })
-        res.render('priorities.hbs', {importantUrgentArr, importantNonUrgentArr, urgentNotImportantArr, nonUrgentNotImportantArr})
+        res.render('priorities.hbs', {importantUrgentArr, importantNonUrgentArr, urgentNotImportantArr, nonUrgentNotImportantArr, style:'priorities.css'})
     })
     .catch(err => res.send(err))
 })
@@ -104,7 +97,7 @@ router.get('/completed', isAuthenticated, (req, res, next)=> {
         $and: [{userId: req.session.user._id}, {status:true}]
     })
     .then(listsArr => {
-        res.render('completed.hbs', {listsArr})
+        res.render('completed.hbs', {listsArr, style:"completed.css"})
     })
 })
 
