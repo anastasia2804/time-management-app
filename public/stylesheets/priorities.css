@@ -39,21 +39,21 @@ margin:0;
   }
   
   .task-update-btn {
-      padding: 10px 20px;
-      font-size: 16px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      border-radius: 30px;
-      background-color: white;
-      color: black;
-      outline: none;
-      border: 1px solid #ff4584;
-      cursor: pointer;
-   }
-  
-   .task-update-btn:hover {
-      background-color: #f53677;
-  }
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    outline: none;
+    border: 1px solid rgb(243, 183, 242);
+    cursor: pointer;
+ }
+
+ .task-update-btn:hover {
+    background-color: rgb(243, 183, 242);
+}
   
   .task-update-btn-small {
     padding: 0 10px;
@@ -71,6 +71,7 @@ margin:0;
   .grid-item-title {
     text-align: center;
     font-weight:600;
+    background-color: rgb(249, 216, 248);
   }
   
   .text-center {
@@ -85,3 +86,11 @@ margin:0;
     flex-wrap: wrap;
     padding: 30px;
   }
+
+  h1 {
+    text-align: center;
+  }
+/* 
+  .square-1 {
+    background-color: aquamarine;
+  } */

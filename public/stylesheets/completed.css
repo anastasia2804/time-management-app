@@ -31,3 +31,20 @@ margin:0;
     border-radius: 2.5px;
     margin: 30px 0 30px 0;
   }
+
+  .task-update-btn-small {
+    padding: 2px 10px;
+    letter-spacing: 1px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+  
+  .task-update-btn-small:hover {
+    background-color: #03a9f4;
+  }
+
+  h1 {
+    text-align: center;
+  }

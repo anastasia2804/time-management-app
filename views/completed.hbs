@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
+    <h1>My Accomplishments</h1>
     <div class="container">
+        
         <div class="completedBx">
         {{#each listsArr}}
             <div>
-            <h4 class="margin-top-bottom">{{this.description}}</h4>
+            <h3 class="margin-top-bottom">{{this.description}}</h3>
             </div>
             <div>
             <form method="POST" action="/completed/{{this._id}}/delete">
