@@ -18,7 +18,8 @@ const favicon = require("serve-favicon");
 const path = require("path");
 
 //express-session, npm package, sets up the sessions
-const session = require('express-session')
+const session = require('express-session');
+const MongoStore = require("connect-mongo");
 
 // Middleware configuration
 module.exports = (app) => {
@@ -29,6 +30,10 @@ module.exports = (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
+  
+  //Needs to be above the sessions setup
+  app.set('trust proxy', 1);
+
   app.use(
     session({
       secret: process.env.SESS_SECRET,
@@ -39,7 +44,10 @@ module.exports = (app) => {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         maxAge: 600000 // 60 * 1000 ms === 1 min
-      }
+      },
+      store: MongoStore.create({
+        mongoUrl:process.env.MONGODB_URI || "mongodb://localhost/Project-2"
+      })
     })
   );
 
