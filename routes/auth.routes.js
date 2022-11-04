@@ -5,7 +5,6 @@ const bcryptjs = require("bcryptjs");
 
 const { isAuthenticated, isNotAuthenticated } = require('../middlewares/auth.middleware.js');
 
-
 //GET home page //
 router.get("/", (req, res, next) => {
   res.render("index.hbs", {style:'home.css'});

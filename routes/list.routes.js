@@ -6,25 +6,27 @@ const { isAuthenticated } = require("../middlewares/auth.middleware");
 const e = require("express");
 
 //GET route, create a new item on the list
-router.get('/my-list', isAuthenticated, (req, res, next)=> {
-    let username = req.session.user.username
+router.get('/my-list', (req, res, next)=> {
+    // let username = req.session.user.username
 
     List.find({
-        $and: [{userId: req.session.user._id}, {status:false}, {important:null}, {urgent: null}]
+        $and: [{status:false}, {important:null}, {urgent: null}]
+        // $and: [{userId: req.session.user._id}, {status:false}, {important:null}, {urgent: null}]
     })
     .then(listsArr => {
-        res.render('my-list.hbs', {listsArr, username, style: "mylist.css"})
+        res.render('my-list.hbs', {listsArr, style: "mylist.css"})
+        // res.render('my-list.hbs', {listsArr, username, style: "mylist.css"})
     })
     
 })
 
 //POST 
-router.post('/my-list', isAuthenticated, (req, res, next)=> {
+router.post('/my-list', (req, res, next)=> {
     const newTask = {
         description: req.body.description,
         important: null,
         urgent: null,
-        userId: req.session.user._id,
+        // userId: req.session.user._id,
         status: false
     };
 
@@ -49,9 +51,11 @@ router.post('/my-list/:id/delete', (req, res, next) => {
     .catch(err=> console.log(err))
 })
 
-router.get('/priorities', isAuthenticated, (req, res, next) => {
+// router.get('/priorities', isAuthenticated, (req, res, next) => {
+router.get('/priorities', (req, res, next) => {
     List.find({
-        $and: [{userId: req.session.user._id}, {status: false}, {important: {$ne: null}}, {urgent: {$ne: null}}]
+        $and: [{status: false}, {important: {$ne: null}}, {urgent: {$ne: null}}]
+        // $and: [{userId: req.session.user._id}, {status: false}, {important: {$ne: null}}, {urgent: {$ne: null}}]
     })
     .then(tasksArr => {
         const importantUrgentArr = tasksArr.filter(el => {
@@ -91,10 +95,12 @@ router.post('/priorities/:id/delete', (req, res, next) => {
     .catch(err=> console.log(err))
 })
 
-router.get('/completed', isAuthenticated, (req, res, next)=> {
+// router.get('/completed', isAuthenticated, (req, res, next)=> {
+router.get('/completed', (req, res, next)=> {
 
     List.find({
-        $and: [{userId: req.session.user._id}, {status:true}]
+        $and: [{status:true}]
+        // $and: [{userId: req.session.user._id}, {status:true}]
     })
     .then(listsArr => {
         res.render('completed.hbs', {listsArr, style:"completed.css"})
