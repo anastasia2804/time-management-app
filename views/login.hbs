@@ -8,23 +8,6 @@
 </head>
 <body>
 
-{{!-- 
-    <h2>Login</h2>
-    <form method="post" action="/login">
-        
-            <span>Username</span>
-            <input type="text" name="username">
-        
-          
-            <span>Password</span>
-            <input type="password" name="password">
-        
-        <div>
-            <button type="submit">Sign In</button>
-        </div>
-    </form> --}}
-    
-
     <section>
         <div class="imgBx">
           <img src="images/log-in.jpg">
@@ -45,8 +28,11 @@
                         <button type="submit">Sign In</button>
                     </div>
                     <div class="inputBx">
-                        <p>Don't have an account <a href="/signup">Sign up</a></p>
+                        <p>Don't have an account? <a href="/signup">Sign up</a></p>
                     </div>
+                    {{#if errorMessage}}
+                        <p>{{errorMessage}}</p>
+                    {{/if}}
                 </form>
             </div>
         </div>

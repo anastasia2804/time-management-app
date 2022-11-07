@@ -2,6 +2,7 @@ const express = require("express");
 const router =express.Router();
 const User = require("../models/User.model");
 const bcryptjs = require("bcryptjs");
+const mongoose = require('mongoose');
 
 const { isAuthenticated, isNotAuthenticated } = require('../middlewares/auth.middleware.js');
 
@@ -24,6 +25,18 @@ router.post("/signup", (req, res, next)=> {
   const myUsername=req.body.username
   const myPassword=req.body.password
 
+  if (!myUsername || !myPassword ) {
+    res.render("/signup", {errorMessage: 'All fields are mandatory. Please provide your username and password.'})
+    return;
+  }
+
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!regex.test(password)) {
+    res.status(500)
+      .render('/signup', { errorMessage: 'Password needs to have at least 6 characters and must contain at least one number, one lowercase and one uppercase letter.'});
+    return;
+  }
+
   //BCRYPT
   const myHashedPassword = bcryptjs.hashSync(myPassword);
 
@@ -35,9 +48,16 @@ router.post("/signup", (req, res, next)=> {
     console.log(savedUser)
     res.redirect("/login")
   })
-  .catch(err => {
-    console.log(err)
-    res.send(err)
+  .catch(error => {
+    if (error instanceof mongoose.Error.ValidationError) {
+      res.status(500).render('/signup', { errorMessage: error.message });
+    } else if (error.code === 11000) {
+      res.status(500).render('/signup', {
+         errorMessage: 'This username is already in use.'
+      });
+    } else {
+      next(error);
+    }
   })
 })
 
@@ -53,16 +73,23 @@ router.post("/login", (req, res, next)=> {
   const myUsername=req.body.username
   const myPassword=req.body.password
 
+  if (myUsername === '' || myPassword === '') {
+    res.render('/login', {
+      errorMessage: 'Please enter both username and password to login.'
+    });
+    return;
+  }
+
   User.findOne({
     username: myUsername
   })
   .then(foundUser => {
-
-    console.log(foundUser);
     
     //check if usernames match
     if(!foundUser) {
-      res.send("no user matching this username")
+      res.render("/login", {
+        errorMessage: 'No user matching this username'
+      });
       return;
     } 
     
@@ -72,7 +99,7 @@ router.post("/login", (req, res, next)=> {
 
     //check if passwords match
     if(!isValidPassword){
-      res.send("incorrect password");
+      res.render('/login', { errorMessage: 'Incorrect password.' });
       return;
     }
 
@@ -94,24 +121,5 @@ router.post('/logout', (req, res, next) => {
     res.redirect('/');
   });
 });
-
-
-// //GET my-list route
-// router.get("/my-list", (req, res, next)=> {
-//   //if user's data is in a session, use it in hbs
-//   if(req.session.user) {
-//     res.render("my-list.hbs", {username: req.session.user.username})
-//   } else {
-//     res.render("my-list.hbs", {username: "Stranger"})
-//   }
-// })
-
-// //Protected route
-// router.get('/protected', isAuthenticated, (req, res, next)=>{
-//   res.send('this is protected route')
-// })
-
-
-
 
 module.exports = router;

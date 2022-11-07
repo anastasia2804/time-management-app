@@ -26,6 +26,12 @@
                     <div class="inputBx">
                         <button type="submit">Sign Up</button>
                     </div>
+                    <div class="inputBx">
+                        <p>Already have an account? <a href="/login">Log In</a></p>
+                    </div>
+                    {{#if errorMessage}}
+                        <p>{{errorMessage}}</p>
+                    {{/if}}
                 </form>
             </div>
         </div>
