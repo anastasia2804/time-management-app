@@ -141,6 +141,11 @@ section .contentBx .formBx .inputBx p a {
     color: #ff4584;
 }
 
+.error {
+   padding-bottom: 20px;
+   color: red;
+}
+
 @media (max-width:768px)
 {
     section .imgBx {

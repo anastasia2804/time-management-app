@@ -26,14 +26,14 @@ router.post("/signup", (req, res, next)=> {
   const myPassword=req.body.password
 
   if (!myUsername || !myPassword ) {
-    res.render("/signup", {errorMessage: 'All fields are mandatory. Please provide your username and password.'})
+    res.render("signup", {errorMessage: 'All fields are mandatory. Please provide your username and password.'})
     return;
   }
 
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  if (!regex.test(password)) {
+  if (!regex.test(myPassword)) {
     res.status(500)
-      .render('/signup', { errorMessage: 'Password needs to have at least 6 characters and must contain at least one number, one lowercase and one uppercase letter.'});
+      .render("signup", { errorMessage: 'Password needs to have at least 6 characters and must contain at least one number, one lowercase and one uppercase letter.'});
     return;
   }
 
@@ -50,9 +50,9 @@ router.post("/signup", (req, res, next)=> {
   })
   .catch(error => {
     if (error instanceof mongoose.Error.ValidationError) {
-      res.status(500).render('/signup', { errorMessage: error.message });
+      res.status(500).render('signup', { errorMessage: error.message });
     } else if (error.code === 11000) {
-      res.status(500).render('/signup', {
+      res.status(500).render('signup', {
          errorMessage: 'This username is already in use.'
       });
     } else {
@@ -74,7 +74,7 @@ router.post("/login", (req, res, next)=> {
   const myPassword=req.body.password
 
   if (myUsername === '' || myPassword === '') {
-    res.render('/login', {
+    res.render('login', {
       errorMessage: 'Please enter both username and password to login.'
     });
     return;
@@ -87,7 +87,7 @@ router.post("/login", (req, res, next)=> {
     
     //check if usernames match
     if(!foundUser) {
-      res.render("/login", {
+      res.render("login", {
         errorMessage: 'No user matching this username'
       });
       return;
@@ -99,7 +99,7 @@ router.post("/login", (req, res, next)=> {
 
     //check if passwords match
     if(!isValidPassword){
-      res.render('/login', { errorMessage: 'Incorrect password.' });
+      res.render('login', { errorMessage: 'Incorrect password.' });
       return;
     }
 
